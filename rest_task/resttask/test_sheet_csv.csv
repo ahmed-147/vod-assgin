@@ -1,0 +1,9 @@
+SiteName,Region,Latitude,Longitude,Active
+site 3,region 3,0.00000,0.00000,yes
+site 4,region 4,0.00000,0.00000,yes
+site 5,region 5,0.00000,0.00000,yes
+site 6,region 6,0.00000,0.00000,no
+site 10,region 7,0.00000,0.00000,n
+site 8,region 8,0.00000,0.00000,no
+site 4,region 9,ss,s0,y
+site 10,region 10,0.00000,0.00000,yes
