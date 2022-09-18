@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import get_sites, upload_sites, FileUploadView
+from .views import get_sites, FileUploadView
 
 
 urlpatterns = [
