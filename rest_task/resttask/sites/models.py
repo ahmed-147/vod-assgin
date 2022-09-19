@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
-
 class Site(models.Model):
 
     CHOICES_BOOLEANO_YES_NO = (
@@ -23,8 +22,8 @@ class Site(models.Model):
     region = models.CharField("Region", max_length=50)
     latitude = models.FloatField("Latitude", default=0)
     longitude = models.FloatField("Longitude", default=0)
-    active = models.CharField(
-        max_length=3, choices=CHOICES_BOOLEANO_YES_NO, default='no', validators=[validate_active])
+    active = models.CharField(_("Active"),
+                              max_length=3, choices=CHOICES_BOOLEANO_YES_NO, default='no', validators=[validate_active])
     
     def __str__(self):
         return self.name

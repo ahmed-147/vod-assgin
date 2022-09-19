@@ -1,6 +1,7 @@
 from rest_framework import serializers  
 from sites.models import Site, Request
 
+
 class SiteSerializer(serializers.ModelSerializer):
     
     class Meta:

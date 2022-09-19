@@ -1,10 +1,12 @@
-from django.urls import path, re_path
-from .views import get_sites, FileUploadView
-
+from django.urls import path
+from .views import FileImportExportView, SiteList, api_overview,RequestList, RequestDetail
 
 urlpatterns = [
-    path('sites/', get_sites ),
-    path('upload/sites/', FileUploadView.as_view() ),
-
-    # re_path(r'^upload/(?P<filename>[^/]+)$', FileUploadView.as_view()),
+    # path('sites/', get_sites),
+    path('', api_overview),
+    path('sites/', SiteList.as_view() ),
+    path('sites/import/', FileImportExportView.as_view() ),
+    path('sites/export/', FileImportExportView.as_view() ),
+    path('requests/', RequestList.as_view()),
+    path('requests/<int:pk>/', RequestDetail.as_view()),
 ]
