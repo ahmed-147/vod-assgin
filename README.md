@@ -45,23 +45,23 @@ In our case, we have one single resource, `sites`, so we will use the following 
 
 Endpoint |HTTP Method | CRUD Method | Result
 -- | -- |-- |--
-`api/sites` | GET | READ | Get all sites
+`api/sites/` | GET | READ | Get all sites
 `api/sites/import/` | POST | CREATE | Create all sites in CSV file
 `api/sites/export/` | GET | READ | Get all sites and export CSV file 
 `api/requests/` | GET | READ | Get all requests
 `api/requests/:id` | GET | READ | Get a single request
-`api/requests`| POST | CREATE | Create a new request
+`api/requests/`| POST | CREATE | Create a new request
 `api/requests/:id` | PUT | UPDATE | Update a request
 `api/requests/:id` | DELETE | DELETE | Delete a requests
 
 
 
-### GET api/sites
+### GET api/sites/
 - General:
     1. Returns all the sites.
     2. Returns the sites filtered by active or region or both.
 
-- Sample: curl http://127.0.0.1:8000/api/sites
+- Sample: curl http://127.0.0.1:8000/api/sites/
 ```bash
  HTTP 200 OK
 Allow: GET, HEAD, OPTIONS
@@ -97,7 +97,7 @@ Vary: Accept
 ]
 ```
 
-- Sample: curl http://127.0.0.1:8000/api/sites?active=no
+- Sample: curl http://127.0.0.1:8000/api/sites/?active=no
 ```bash
  HTTP 200 OK
 Allow: GET, HEAD, OPTIONS
@@ -133,7 +133,7 @@ Vary: Accept
 ]
 ```
 
-- Sample: curl http://127.0.0.1:8000/api/sites?active=no
+- Sample: curl http://127.0.0.1:8000/api/sites/?region=region%206
 ```bash
 HTTP 200 OK
 Allow: GET, HEAD, OPTIONS
@@ -228,12 +228,12 @@ Vary: Accept
 
 ```
 
-### GET /api/requests
+### GET /api/requests/
 - General:
     1. Returns all requests
 
 
-- Sample: curl http://127.0.0.1:8000/api/requests
+- Sample: curl http://127.0.0.1:8000/api/requests/
 ```bash
 HTTP 200 OK
 Allow: GET, POST, HEAD, OPTIONS
@@ -256,7 +256,7 @@ Vary: Accept
 ]
 ```
 
-### Post /api/requests
+### Post /api/requests/
 - General:
     1. Creates a new request based on a payload
 
@@ -294,7 +294,7 @@ Vary: Accept
 }
 ```
 
-### Delete api/requests/<int:pk>
+### Delete api/requests/<int:pk>/
 - General:
     1. Delete the request that have this ID.
 
@@ -306,18 +306,21 @@ Vary: Accept
 }
 ```
 
-### UPDATE api/requests/<int:pk>
+### UPDATE api/requests/<int:pk>/
 - General:
     1. UPDATE the request that have this ID.
 
-- Sample: curl -X UPDATE http://127.0.0.1:8000/api/requests/ -H "Content-Type: application/json" -d '{ "reuest_no": 655643, "details": "tesddtx", "SiteName": 96 }'
+- Sample: curl -X PUT http://127.0.0.1:8000/api/requests/1/ -H "Content-Type: application/json" -d '{ "reuest_no": 655643, "details": "tesddtx", "SiteName": 3 }'
 ```bash
-{
-    "id": 5,
-    "reuest_no": 655643,
-    "details": "tesddtx",
-    "SiteName": 96
-}
+HTTP 200 OK
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+{ 
+  "reuest_no": 655643,
+ "details": "tesddtx",
+ "SiteName": 3 
+ }
 ```
 
 
