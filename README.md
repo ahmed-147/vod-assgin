@@ -31,7 +31,13 @@ You can install all the required dependencies by running
 ```
 pip install -r requirements.txt
 ```
-You have to start up Django's development server by negative `rest_task/resttask`.
+To make migrations in dir `rest_task/resttask`
+```
+python manage.py makemigrations
+python manage.py migrate
+
+```
+You have to start up Django's development server in `rest_task/resttask`.
 ```
 python manage.py runserver
 ```
