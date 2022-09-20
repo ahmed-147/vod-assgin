@@ -205,7 +205,14 @@ Vary: Accept
 - General:
     1. Import sites by CSV file and create.
     2. Return sites that created.
-
+- File Constraints:
+  1. File type must be `CSV` and filename must be `sites`.
+  2. Columns header must be (`SiteName`|`Region`|`Latitude`|`Longitude`|`Active`) with the same order.
+  3. `SiteName` : character length must be less than or equal 20 and unique.
+  4. `Region`   : character length must be less than or equal 50.
+  5. `Latitude` : Type must be [float].
+  6. `Longitude`: Type must be [float].
+  7. `Active`   : must be (yes / no).
 - Sample: curl -i -X POST -H "Content-Type: multipart/form-data" -F "sites=@/vod-assgin/rest_task/resttask/static/test_sheet_valid.csv;type=text/csv" http://127.0.0.1:8000/api/sites/import/
 ```bash
 HTTP 200 OK
