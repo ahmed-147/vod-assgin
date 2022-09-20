@@ -1,9 +1,9 @@
 SiteName,Region,Latitude,Longitude,Active
 site 3,region 3,0.000,0.00,yes
 site 4,region 4,0.00000,0.000,yes
-site 5,region 5,0.000,00,0.00.0,yes
-site 6,region 6,0.00c000,0.00000,no
+site 5,region 5,0.000,000.00,yes
+site 6,region 6,0.00000,0.00000,no
 site 10,region 7,0.00,0.00000,no
-site 8,region 8,0.0,0.000c00,no
+site 8,region 8,0.0,0.0000,no
 site 11,region 9,0.0,2.5,yes
 site 7,region 10,0.00000,0.00000,yes

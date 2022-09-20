@@ -1,37 +1,15 @@
+import uuid
+import pandas as pd
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from rest_framework.exceptions import ValidationError, ParseError
 from rest_framework.parsers import MultiPartParser
 from django.conf import settings
 
-import os
-import uuid
-import pandas as pd
-
 from django_filters.rest_framework import DjangoFilterBackend
 from sites.models import Site, Request
 from .serializers import SiteSerializer, RequestSerializer
-
-
-@api_view(['GET'])
-def api_overview(request):
-    api_url={
-        'requests/': 'list all requests and create a request.',
-        'requests/<int:pk>/': 'Get request by ID (pk),update and delete.',
-        'sites/': 'list all sites and you can filter by region and active',
-        'sites/export/': 'list all sites and export CSV File',
-        'sites/import/': "Import file with sites data to create them must be:",
-        '- file_name': "[sites]",
-        '- file_type': "[CSV]",
-        '- columns_headers': "[SiteName,Region,Latitude,Longitude,Active]",
-        '   1-': "SiteName  : length less than or equal to 20 and can not repeat the name.",
-        '   2-': "Latitude  : float number.",
-        '   3-': "Longitude : float number.",
-        '   4-': "Active    : (yes/no) --> (y,Yes,n,No) not accepted.",
-    }
-    return Response(api_url)
 
 
 class SiteList(generics.ListAPIView):
@@ -98,8 +76,8 @@ class FileImportExportView(APIView):
             # sites.append(Site(name=row['SiteName'], region=row['Region'], latitude=float(row['Latitude']),
             #                   longitude=float(row['Longitude']), active=row['Active']))
         if len(df.index) == len(sites):
-            sites = Site.objects.bulk_create(sites)
-            serializer = SiteSerializer(sites, many=True)
+            created_sites = Site.objects.bulk_create(sites)
+            serializer = SiteSerializer(created_sites, many=True)
             return Response(serializer.data, status=201)
         else:
             raise ValidationError('upload file not match the requirements ')

@@ -3,3 +3,5 @@ migrations/
 env/
 db.sqlite3
 data.json
+/.idea
+media/
